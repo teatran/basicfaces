@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   	  
+    <div class="row">
+        <div class="col-md-8 text-center">
+            <h1>Register your account</h1>
+        </div>	
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <h:form id="registerForm"  styleClass="form-horizontal">
+            <div class="form-group">
+                <label for="nameField" class="col-xs-3">Your name</label>
+                <div class="col-xs-5">
+                    <h:inputText id="nameField" styleClass="form-control" 
+                                 value="#{userBean.name}" required="true" 
+                                 requiredMessage="This can not be blank!"/> 
+                    <p><h:message for="nameField" errorClass="text-danger" /></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordField" class="col-xs-3">Your password</label>
+                <div class="col-xs-5">
+                    <h:inputSecret id="passwordField" styleClass="form-control" 
+                                   value="#{userBean.password}" required="true"
+                                   requiredMessage="Blank password is a risk!" />
+                    <p><h:message for="passwordField" errorClass="text-danger"/></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPasswordField" class="col-xs-3">Confirm password</label>
+                <div class="col-xs-5">
+                    <h:inputSecret id="confirmPasswordField" styleClass="form-control" />
+                </div>
+            </div>
+
+            <div class="col-xs-8 col-xs-offset-3">
+                <div id="myError"></div><br />
+                <h:commandButton value="Submit Form" onclick="return checkPassword(this.form);"  
+                                 styleClass="btn btn-primary" action="#{userBean.checkAction}" />
+            </div>
+        </h:form>
+
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <h3>JavaServer Faces version 2.0</h3>
+            <p>JSF is a component-based framework. 
+                JSF is all about server-side components.</p>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <h3>Bootstrap 3x</h3>
+            <p>Bootstrap is a front-end framework. 
+                One of its most important features is the grid system.</p>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <h3>Managed Beans</h3>
+            <p>Beans separate the presentation and business logic. 
+                Beans store the state of web pages.</p>
+        </div>
+    </div>
+   	
+</html>

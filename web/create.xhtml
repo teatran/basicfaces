@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   	  
+   <h:head>
+   </h:head>
+   
+   <h:body>
+ 	  <ui:composition template="/templates/master.xhtml">
+ 	  	 <ui:define name="content">
+ 	  		
+			<div class="row">
+	 	  		<div class="col-md-8 text-center">
+	 	  			<h1>Create New Student</h1>
+	 	  		</div>	
+	 	  	</div>
+	 	  	
+	 	  	<hr />
+	 	  	
+	 	  	<div class="row">
+		 	  	<h:form id="registerForm"  styleClass="form-horizontal">
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="idField" class="col-xs-3">Student Id</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="idField" class="form-control" 
+		 	  				             value="#{student.studentId}" required="true" 
+		 	  				             requiredMessage="This can not be blank!"/> 
+		 	  				<p><h:message for="idField" errorClass="text-danger" /></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="firstnameField" class="col-xs-3">First name</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="firstnameField" class="form-control" 
+		 	  				               value="#{student.firstName}" required="true"
+		 	  				               requiredMessage="This can not be blank!" />
+		 	  				<p><h:message for="firstnameField" errorClass="text-danger"/></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="lastnameField" class="col-xs-3">Last name</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="lastnameField" class="form-control"
+		 	  				             value="#{student.lastName}" required="true"
+		 	  				             requiredMessage="This can not be blank!" />
+		 	  				<p><h:message for="lastnameField" errorClass="text-danger"/></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="classField" class="col-xs-3">Study Class</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:selectOneMenu id="classField" value="#{student.classId}">
+		 	  					<f:selectItems value="#{student.classList}"/>
+		 	  				</h:selectOneMenu>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="subjectField" class="col-xs-3">Subject</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="subjectField" class="form-control"
+		 	  				             value="#{student.subject}" required="true"
+		 	  				             requiredMessage="This can not be blank!" />
+		 	  				<p><h:message for="subjectField" errorClass="text-danger"/></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="markField" class="col-xs-3">Mark</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="markField" class="form-control" value="#{student.mark}" required="true">
+		 	  					<f:convertNumber minFractionDigits="2"/>
+		 	  					<f:validateLongRange minimum="0" maximum="10"/>
+		 	  				</h:inputText>
+		 	  				<p><h:message for="markField" errorClass="text-danger"/></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="form-group">
+		 	  			<h:outputLabel for="dateField" class="col-xs-3">Date (dd/MM/yyyy)</h:outputLabel>
+		 	  			<div class="col-xs-5">
+		 	  				<h:inputText id="dateField" class="form-control" value="#{student.checkDate}" required="true">
+		 	  					<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+		 	  				</h:inputText>
+		 	  				<p><h:message for="dateField" errorClass="text-danger"/></p>
+		 	  			</div>
+		 	  		</div>
+		 	  		<div class="col-xs-8 col-xs-offset-3">
+		 	  			<div id="myError"></div><br />
+		 	  			<h:commandButton value="Add Student" class="btn btn-primary"
+		 	  			                 action="#{student.addToDatabase()}" />
+		 	  		</div>
+		 	  	</h:form>
+	 	  	</div> 
+ 	 	
+ 	  	 </ui:define>
+ 	  </ui:composition>
+   	  
+   	       
+      
+      <!-- scripts for JQuery and Bootstrap -->
+      <h:outputScript library="js" name="checkConfirmPass.js" />
+      <h:outputScript library="js" name="jquery.js" />
+      <h:outputScript library="js" name="bootstrap.js" /> 
+   </h:body>
+</html>

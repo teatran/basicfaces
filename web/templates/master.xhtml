@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+   <h:head>
+   	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>JSF 2.0 Demo</title>
+      <h:outputStylesheet library="css" name="bootstrap.css" />
+      <h:outputStylesheet library="css" name="style.css" />
+   </h:head>
+   
+   <h:body>
+   	
+   	<!-- top menu -->
+    <ui:insert name="topMenu">
+    	<ui:include src="/templates/topMenu.xhtml" />
+    </ui:insert>
+
+    <!-- Page Content -->
+    <div class="container">
+	  <br/><br/>
+      <div class="row">
+
+        <div class="col-md-3">
+
+          <h1 class="my-4">JSF Workshop</h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item">Java Programming</a>
+            <a href="#" class="list-group-item">What is a Bean?</a>
+            <a href="#" class="list-group-item">JavaServer Faces</a>
+          </div>
+
+        </div>
+        <!-- /.col-md-3 -->
+
+        <div class="col-md-9">
+
+			<div id="content">
+				<ui:insert name="content" />
+			</div>			
+          	
+          	<ui:debug /> 
+          	
+        </div>
+        <!-- /.col-md-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <hr />
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2017 - JSF 2.0 </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+	   	
+      
+      <!-- scripts for JQuery and Bootstrap -->
+      <h:outputScript library="js" name="checkConfirmPass.js" />
+      <h:outputScript library="js" name="jquery.js" />
+      <h:outputScript library="js" name="bootstrap.js" /> 
+   </h:body>
+</html>

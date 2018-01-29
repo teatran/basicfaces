@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+   	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Select One or Many components</title>
+      <h:outputStylesheet library="css" name="bootstrap.css" />
+      <h:outputStylesheet library="css" name="style.css" />
+   </h:head>
+   <h:body>
+   	  <div class="container">
+ 	  	<div class="row">
+ 	  		<div class="col-md-12 text-center">
+ 	  			<h1>Checkboxes, Radio buttons, and Listboxes</h1>
+ 	  		</div>	
+ 	  	</div>
+ 	  	
+ 	  	<hr />
+ 	  	
+ 	  	<div class="row">
+	 	  	<h:form id="registerForm"  styleClass="form-horizontal">
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Your email (optional):</label>
+	 	  			<div class="col-xs-5">
+	 	  				<h:inputText value="#{form.email}" styleClass="form-control" /> 
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Contact me</label>
+	 	  			<div class="col-xs-5">
+	 	  				<h:selectBooleanCheckbox value="#{form.contactMe}" styleClass="form-check-input" />
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Year of birth</label>
+	 	  			<div class="col-xs-5">
+	 	  				<h:selectOneMenu value="#{form.yearOfBirth}" required="true">
+	 	  					<f:selectItems value="#{form.yearItems}" />
+	 	  				</h:selectOneMenu>
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Favourite colors</label>
+	 	  			<div class="col-xs-6">
+	 	  				<h:selectManyCheckbox value="#{form.colors}" styleClass="table noBorder table-borderless"
+	 	  									  selectedClass="selected" disabledClass="disable">
+	 	  					<f:selectItems value="#{form.colorItems}" />
+	 	  				</h:selectManyCheckbox>
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Fluent languages</label>
+	 	  			<div class="col-xs-5">
+	 	  				<h:selectManyListbox size="5" value="#{form.languages}">
+	 	  					<f:selectItems value="#{form.languageItems}" />
+	 	  				</h:selectManyListbox>
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="form-group">
+	 	  			<label class="col-xs-3">Your education</label>
+	 	  			<div class="col-xs-5">
+	 	  				<h:selectOneRadio value="#{form.education}" layout="pageDirection">
+	 	  					<f:selectItems value="#{form.educationItems}" />
+	 	  				</h:selectOneRadio>
+	 	  			</div>
+	 	  		</div>
+	 	  		<div class="col-xs-8 col-xs-offset-3">
+	 	  			<div id="myError"></div><br />
+	 	  			<h:commandButton value="Submit Form" action="welcome"  
+	 	  							 styleClass="btn btn-primary" />
+	 	  		</div>
+	 	  	</h:form>
+	 	  	<h:messages />
+	 	  			
+	 	  		
+ 	  	</div>
+
+   	  </div>
+   	  
+      
+      <!-- scripts for JQuery and Bootstrap -->
+      <h:outputScript library="js" name="checkConfirmPass.js" />
+      <h:outputScript library="js" name="jquery.js" />
+      <h:outputScript library="js" name="bootstrap.js" /> 
+   </h:body>
+</html>

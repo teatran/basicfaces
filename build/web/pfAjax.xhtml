@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view contentType="text/html">
+    <h:head>
+        <title>Register</title>
+    </h:head>
+    <h:body>
+        <h1>Demo some AJAX actions with Prime Faces</h1>
+        <h:form id="registrationForm">
+            <p:panel header="Registration Form">
+                <p:messages/>
+                
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Your UserName:"/>
+                    <p:inputText id="username" required="true"
+                                 value="#{userController.registrationUser.username}">
+                        <p:ajax event="keyup" update="usernameMessage"
+                                listener="#{userController.checkUsernameExists()}"/>
+                    </p:inputText>
+                    <p:message id="usernameMessage" for="username"/>
+                    
+                    <p:outputLabel value="Your Password:"/>
+                    <p:password id="password" required="true"
+                                value="#{userController.registrationUser.password}">
+                        <f:validateLength minimum="4"/>
+                    </p:password>
+                    <p:message id="passwordMessage" for="password"/>
+                    
+                    <p:outputLabel value="Your Email:"/>
+                    <p:inputText id="email" onchange="validateEmail();"
+                                 value="#{userController.registrationUser.email}"/>
+                    <p:message id="emailMessage" for="email"/>
+                    
+                    <p:outputLabel value=""/>
+                    <p:commandButton action="#{userController.register}" value="Register"
+                                     update="registrationForm"/>
+                    <p:outputLabel value=""/>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+        
+        <script>
+            function validateEmail() {
+                // create an RexExp literal
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var email = $.trim($('#registrationForm\\:email').val());
+                if (email == '') {
+                    return;
+                }
+                if (emailReg.test(email)) {
+                    $('#registrationForm\\:emailMessage').text("Valid Email");
+                }
+                else {
+                    $('#registrationForm\\:emailMessage').text("Invalid Email");
+                }
+            };
+        </script>
+    </h:body>
+</f:view>
+</html>
+

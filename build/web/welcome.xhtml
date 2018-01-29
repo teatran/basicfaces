@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+   	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Basic site with JSF Technology</title>
+      <h:outputStylesheet library="css" name="bootstrap.css" />
+   </h:head>
+   <h:body>
+   	  <ui:composition template="/templates/master.xhtml">
+   	  	<ui:define name="content">
+   	  		<!-- Start content -->
+	 	  	<div class="row">
+	 	  		<div class="col-md-8">
+	 	  			<h2>Welcome to JavaServer Faces</h2>
+	 	  			<p>Your name is: #{userBean.name}</p>
+	 	  			<p>Your password is: #{userBean.password}</p>
+	 	  			<p>Contact: #{form.contactMe}</p>
+	 	  			<p>Year of birth #{form.yearOfBirth}</p>
+	 	  			<p>Favourite colors: #{form.colorsConcat}</p>
+	 	  			<p>Languages #{form.languages}</p>
+	 	  			<p>Your education: #{form.education}</p>
+	 	  		</div>	
+	 	  	</div>
+	 		<!-- End content -->
+   	  	</ui:define>
+   	  </ui:composition>
+      
+      <!-- scripts for JQuery and Bootstrap -->
+      <h:outputScript library="js" name="checkConfirmPass.js" />
+      <h:outputScript library="js" name="jquery.js" />
+      <h:outputScript library="js" name="bootstrap.js" /> 
+   </h:body>
+</html>

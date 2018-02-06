@@ -11,6 +11,8 @@ public class User
     private String phone;
     private Date dob;
     private String credit;
+    private String classId;
+    private String className;
     
     // getters and setters
     public Integer getId() { return id; }
@@ -33,4 +35,10 @@ public class User
     
     public String getCredit() { return credit; }
     public void setCredit(String newValue) { credit = newValue; }
+    
+    public String getClassId() { return classId; }
+    public void setClassId(String newValue) { classId = newValue; }
+    
+    public String getClassName() { return className; }
+    public void setClassName(String newValue) { className = newValue; }
 }

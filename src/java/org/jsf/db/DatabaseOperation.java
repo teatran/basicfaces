@@ -41,7 +41,7 @@ public class DatabaseOperation {
 			resultSet = statement.executeQuery("SELECT malop, tenlop FROM lophoc;");
 			while (resultSet.next()) {
 				SelectItem item = new SelectItem(resultSet.getString("malop"),
-												 resultSet.getString("tenlop"));
+								resultSet.getString("tenlop"));
 				allClasses.add(item);
 			}
 			connection.close();
@@ -101,7 +101,7 @@ public class DatabaseOperation {
 		int updateCount = 0;
 		try {
 			prepare = getConnection().prepareStatement("INSERT INTO miengiam" +
-					"(mssv, ho, ten, malop, mondanghoc, diemdanghoc, ngay) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                            "(mssv, ho, ten, malop, mondanghoc, diemdanghoc, ngay) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			prepare.setString(1, student.getStudentId());
 			prepare.setString(2, student.getFirstName());
 			prepare.setString(3, student.getLastName());

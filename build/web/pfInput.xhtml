@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+    </h:head>
+    
+    <h:body>
+        <h1>Demo PF Input components</h1>
+        <h:form>
+            <p:panel header="InputText Component">
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Class ID (with Ajax)"/>
+                    <p:inputText value="#{userController.registrationUser.classId}"
+                                 required="true" onclick="$(this).select()">
+                        <p:ajax event="change" listener="#{userController.handleChangeClassId}" update="out" />
+                    </p:inputText>
+                    <p:outputLabel id="out" value="#{userController.registrationUser.className}"/>
+                    
+                    <p:outputLabel value="Phone"/>
+                    <p:inputMask id="phone" mask="(9999) 999 999?9" required="true"/>
+                    <p:message for="phone"/>
+                    
+                    <p:outputLabel value="Password"/>
+                    <p:password id="password" value="#{userController.registrationUser.password}" 
+                                required="true" feedback="true"
+                                promptLabel="Please enter a strong password"
+                                weakLabel="Weak Password"
+                                goodLabel="Good Password"
+                                strongLabel="Strong Password"
+                                match="passwordConfirm" validatorMessage="Passwords must be matched"/>
+                    <p:message for="password"/>
+                    
+                    <p:outputLabel value="Confirm Password"/>
+                    <p:password id="passwordConfirm" value="#{userController.passwordConfirm}"/>
+                    <p:message for="passwordConfirm"/>
+                    
+                    <p:outputLabel value="Email"/>
+                    <p:inplace id="email" label="teaprogramming@gmail.com"/>
+                    
+                    
+                    <p:commandButton value="Submit" update="@form"/>
+                </h:panelGrid>
+               
+            </p:panel>
+        </h:form>
+            
+    </h:body>
+    
+</html>
+
+

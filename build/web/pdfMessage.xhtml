@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+    </h:head>
+    
+    <h:body>
+        <p:tooltip/>  <!-- A global tooltip here -->
+        <h:form>
+            <p:panel header="PrimeFaces: message - tooltip - fragment">
+                <p:fragment autoUpdate="true">
+                    <p:fieldset legend="Register" toggleable="true">
+                        <h:panelGrid columns="3">
+                            <p:outputLabel value="Email"/>
+                            <p:inputText id="email" value="#{userController.registrationUser.email}"
+                                         required="true" requiredMessage="Enter your email"
+                                         title="Example: teaprogramming@gmail.com"/>
+                            <p:message for="email"/>
+                            <p:outputLabel value="Password"/>
+                            <p:inputText id="password" value="#{userController.registrationUser.password}"
+                                         required="true" requiredMessage="Enter your password"
+                                         title="Choose a password that is hard to guess"/>
+                            <p:message for="password" display="text"/>
+                            <p:outputLabel value="Username"/>
+                            <p:inputText id="username" value="#{userController.registrationUser.username}"
+                                         required="true" requiredMessage="Enter your username"/>
+                            <p:message for="username" display="icon" severity="warn, error"/>
+                            <p:outputLabel value=""/>
+                            <p:commandButton value="Register" update="@form"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+                </p:fragment>
+                <br/>
+                <p:fragment autoUpdate="true">
+                    <p:fieldset legend="User Detail" toggleable="true">
+                        <h:panelGrid columns="3">
+                            <p:outputLabel value="Second email"/>
+                            <p:inputText id="secondEmail" value="#{userController.registrationUser.email}"
+                                         required="true" requiredMessage="Enter your email"
+                                         title="Example: teaprogramming@gmail.com"/>
+                            <p:message for="secondEmail"/>
+                            <p:outputLabel value="Phone"/>
+                            <p:inputText id="phone" value="#{userController.registrationUser.phone}"
+                                         required="true" requiredMessage="Enter your phone"/>
+                            <p:message for="phone" display="icon"/>
+                            <p:outputLabel value=""/>
+                            <p:commandButton value="Register" update="@form"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+                </p:fragment>
+            </p:panel>
+        </h:form>
+
+    
+    </h:body>
+    
+</html>

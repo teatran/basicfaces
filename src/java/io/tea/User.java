@@ -1,5 +1,7 @@
 package io.tea;
 
+import java.util.Date;
+
 public class User
 {
     private Integer id;
@@ -7,6 +9,8 @@ public class User
     private String password;
     private String email;
     private String phone;
+    private Date dob;
+    private String credit;
     
     // getters and setters
     public Integer getId() { return id; }
@@ -24,4 +28,9 @@ public class User
     public String getPhone() { return phone; }
     public void setPhone(String newValue) { phone = newValue; }
     
+    public Date getDob() { return dob; }
+    public void setDob(Date newValue) { dob = newValue; }
+    
+    public String getCredit() { return credit; }
+    public void setCredit(String newValue) { credit = newValue; }
 }

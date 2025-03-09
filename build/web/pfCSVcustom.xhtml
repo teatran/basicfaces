@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+    </h:head>
+    
+    <h:body>
+        <h:form id="myform1">
+            <h:panelGrid columns="3">
+                <p:outputLabel value="validate"/>
+                <p:inputText id="creditcard" value="#{userController.registrationUser.credit}">
+                    <f:validator validatorId="io.tea.csv.CardValidator"/>
+                </p:inputText>
+                <p:message id="error" for="creditcard"/>
+                <p:commandButton value="Submit" ajax="false" validateClient="true"/>
+            </h:panelGrid>
+        </h:form>
+        
+        <h:form id="myform2">
+            <h:panelGrid columns="3">
+                <p:outputLabel value="converter"/>
+                <p:inputText id="creditcard" value="#{userController.registrationUser.credit}">
+                    <f:converter converterId="io.tea.csv.CardConverter"/>
+                </p:inputText>
+                <p:message id="error" for="creditcard"/>
+                <p:commandButton value="Submit" ajax="false"/>
+            </h:panelGrid>
+        </h:form>
+        
+        <script type="text/javascript">
+            PrimeFaces.validator['creditCardValidator'] = {
+                pattern: /\d{4} \d{4} \d{4} \d{4}/,
+                validate: function(element, value) {
+                    if (!this.pattern.test(value)) {
+                        throw {
+                            summary: 'Validator Error',
+                            detail: element.data('error-msg')
+                        }
+                    }
+                }
+                        
+            }
+            
+            PrimeFaces.converter['creditCardConverter'] = {
+                pattern: /\d{4} \d{4} \d{4} \d{4}/,
+                convert: function(element, value) {
+                    if (!this.pattern.test(value)) {
+                        throw {
+                            summary: 'Conversion Error',
+                            detail: value + ' can not be convertd to a credit card number'
+                        }
+                    }
+                    return value;
+                }
+            }
+        </script>
+    </h:body>
+    
+</html>

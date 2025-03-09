@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+    </h:head>
+    
+    <h:body>
+        <h1>Simple Dialog Demo</h1>
+        <h:form>
+            <p:commandButton type="button" value="Show Dialog"
+                             onclick="PF('dlg').show();" />
+            <p:commandButton type="button" value="Hide Dialog"
+                             onclick="PF('dlg').hide();" />
+            <p:dialog id="simpleDialog" header="A Simple Dialog" widgetVar="dlg"
+                      closeOnEscape="true" width="300" height="50"
+                      showEffect="bounce" hideEffect="explode">
+                <h:outputText value="Hello! Is it me you're looking for?"/>
+            </p:dialog>
+        </h:form>
+        <hr/>
+        <h1>Dialog with a registration form</h1>
+        <p:messages id="globalMessages" autoUpdate="true" globalOnly="true"/>
+        <h:outputLink id="registrationLink" value="javascript:void(0)"
+                      onclick="PF('registrationDialog').show()" title="Registration">
+            <p:outputLabel value="Register An Account"/>
+        </h:outputLink>
+        <p:dialog id="registrationDialog" widgetVar="registrationDialog"
+                  header="Registration Form" focus="">
+            <h:form id="registrationForm">
+                <p:messages id="regMessages"/>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Your Email:"/>
+                    <p:inputText value="#{userController.registrationUser.email}"
+                                 required="true" label="Email"/>
+                    <p:outputLabel value="Your password:"/>
+                    <p:password value="#{userController.registrationUser.password}"
+                                required="true" label="Password"/>
+                    <p:outputLabel value="Day of Birth:"/>
+                    <p:calendar value="#{userController.registrationUser.dob}"
+                                id="dob"/>
+                    <p:commandButton value="Register" update="@form"
+                                     actionListener="#{userController.doRegister()}"
+                                     oncomplete="handleOnComplete(xhr, status, args)"/>
+                </h:panelGrid>
+            </h:form> 
+                
+        </p:dialog>
+        <script>
+            function handleOnComplete(xhr, status, args) {
+                if (args.validationFailed || !args.registered) {
+                    $('#registrationDialog').effect("shake", { times: 3 }, 100);
+                }
+                else {   // registered successful
+                    PF('registrationDialog').hide();
+                    $('#registrationLink').fadeOut();
+                }
+            }
+        </script>
+    </h:body>
+    
+</html>
+
